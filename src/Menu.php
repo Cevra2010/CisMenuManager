@@ -1,7 +1,7 @@
 <?php
-namespace CisExt\MenuManager;
+namespace CisFoundation\MenuManager;
 
-use CisExt\MenuManager\Exception\MenuViewNotFoundException;
+use CisFoundation\MenuManager\Exception\MenuViewNotFoundException;
 use Illuminate\Support\Facades\View;
 
 class Menu {

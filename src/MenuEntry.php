@@ -1,18 +1,21 @@
 <?php
-namespace CisExt\MenuManager;
+namespace CisFoundation\MenuManager;
 
-use Illuminate\Routing\Route;
+use CisFoundation\MenuManager\Exception\MenuRouteNotExistsException;
+use Illuminate\Support\Facades\Route;
 
 class MenuEntry {
 
     public $slug;
     public $text;
     public $route;
+    public $routeParameters;
     public $url;
     public $openInNewWindow = false;
     public $type;
     public $parent_slug;
     public $menu;
+    public $icon;
 
     /**
      * Initialize a new menu entry
@@ -55,8 +58,9 @@ class MenuEntry {
      * @param string $route
      * @return MenuEntry
      */
-    public function setRoute($route) {
+    public function setRoute($route, $routeParameters = []) {
         $this->route = $route;
+        $this->routeParameters = $routeParameters;
         return $this;
     }
 
@@ -69,6 +73,41 @@ class MenuEntry {
     public function setUrl($url) {
         $this->url = $url;
         return $this;
+    }
+
+    public function setIcon($icon) {
+        $this->icon = $icon;
+        return $this;
+    }
+
+    public function isCurrent() : bool {
+        if(Route::current()->getName() == $this->route) {
+            return true;
+        }
+        return false;
+    }
+
+    public function getUrl() {
+        if(isset($this->url)) {
+            return $this->url;
+        }
+        elseif(isset($this->route)) {
+
+
+            if(!Route::has($this->route)) {
+                throw new MenuRouteNotExistsException("The route '".$this->route."' did not exist.");
+            }
+
+            if(count($this->routeParameters)) {
+                return route($this->route,$this->routeParameters);
+            }
+            else {
+                return route($this->route);
+            }
+        }
+        else {
+            return "#";
+        }
     }
 
     /**

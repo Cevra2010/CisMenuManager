@@ -1,6 +1,6 @@
 <?php
 
-namespace CisExt\MenuManager\Exception;
+namespace CisFoundation\MenuManager\Exception;
 
 use Exception;
 

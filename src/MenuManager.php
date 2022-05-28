@@ -1,8 +1,7 @@
 <?php
-namespace CisExt\MenuManager;
+namespace CisFoundation\MenuManager;
 
-use CisExt\MenuManager\Exception\MenuNotFoundException;
-use Exception;
+use CisFoundation\MenuManager\Exception\MenuNotFoundException;
 
 class MenuManager {
 
