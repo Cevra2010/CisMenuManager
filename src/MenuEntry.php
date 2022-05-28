@@ -2,19 +2,79 @@
 namespace CisFoundation\MenuManager;
 
 use CisFoundation\MenuManager\Exception\MenuRouteNotExistsException;
+use CisFoundation\MenuManager\MenuEntry as MenuManagerMenuEntry;
 use Illuminate\Support\Facades\Route;
 
 class MenuEntry {
 
+    /**
+     * Slug of entry
+     *
+     * @var string
+     */
     public $slug;
+
+    /**
+     * Text if entry
+     *
+     * @var string
+     */
     public $text;
+
+    /**
+     * Laravel route of entry
+     *
+     * @var string
+     */
     public $route;
+
+    /**
+     * Route parameters for laravel route
+     *
+     * @var array
+     */
     public $routeParameters;
+
+    /**
+     * Url of entry
+     *
+     * @var string
+     */
     public $url;
+
+    /**
+     * Toggle the _blank parameter true or false for html link
+     *
+     * @var boolean
+     */
     public $openInNewWindow = false;
+
+    /**
+     * Type of link
+     *
+     * @var string
+     */
     public $type;
+
+    /**
+     * Slug of parent entry
+     *
+     * @var string
+     */
     public $parent_slug;
+
+    /**
+     * Name of the menu slug
+     *
+     * @var string
+     */
     public $menu;
+
+    /**
+     * Name of fontawesome icon
+     *
+     * @var string
+     */
     public $icon;
 
     /**
@@ -75,11 +135,22 @@ class MenuEntry {
         return $this;
     }
 
+    /**
+     * Set the menu entry icon
+     *
+     * @param string $icon
+     * @return MenuEntry
+     */
     public function setIcon($icon) {
         $this->icon = $icon;
         return $this;
     }
 
+    /**
+     * Returns whether the current entry is the active entry
+     *
+     * @return boolean
+     */
     public function isCurrent() : bool {
         if(Route::current()->getName() == $this->route) {
             return true;
@@ -87,6 +158,11 @@ class MenuEntry {
         return false;
     }
 
+    /**
+     * Get the URI of the entry
+     *
+     * @return string
+     */
     public function getUrl() {
         if(isset($this->url)) {
             return $this->url;

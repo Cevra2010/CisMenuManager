@@ -2,9 +2,18 @@
 namespace CisFoundation\MenuManager;
 
 use CisFoundation\MenuManager\Exception\MenuNotFoundException;
+use Illuminate\Support\Collection;
 
+/**
+ * CisMenuManager is the base entrypoint for managing CisFoundation backend menus and menu entries
+ */
 class MenuManager {
 
+    /**
+     * Collection of menu object instances
+     *
+     * @var Collection
+     */
     protected static $menuColleciton;
 
     /**

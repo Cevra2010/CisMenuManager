@@ -4,11 +4,24 @@ namespace CisFoundation\MenuManager;
 
 use Illuminate\View\Component;
 
+/**
+ * The view Component for accessing the Menu in Blade View
+ */
 class MenuComponent extends Component
 {
+    /**
+     * Slug of the Menu
+     *
+     * @var string
+     */
     protected $slug;
 
 
+    /**
+     * Register menu Slug
+     *
+     * @param string $slug
+     */
     public function __construct($slug)
     {
         $this->slug = $slug;
