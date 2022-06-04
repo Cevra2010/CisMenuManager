@@ -1,5 +1,5 @@
 <?php
-namespace CisFoundation\MenuManager;
+namespace CisFoundation\CisMenuManager;
 
 use CisFoundation\MenuManager\Exception\MenuNotFoundException;
 use Illuminate\Support\Collection;

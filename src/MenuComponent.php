@@ -1,6 +1,6 @@
 <?php
 
-namespace CisFoundation\MenuManager;
+namespace CisFoundation\CisMenuManager;
 
 use Illuminate\View\Component;
 
